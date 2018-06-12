@@ -1,0 +1,109 @@
+
+<!DOCTYPE html>
+<html
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{layout}">
+<body>
+<div id="Content">
+    <section layout:fragment="content">
+
+        <div id="BackLink">
+            <a th:href="@{/catalog}">
+                Return to Main Menu
+            </a>
+        </div>
+
+        <div id="Catalog">
+
+            <span id="confirmMessage">Please confirm the information below and then press submit...</span>
+
+            <table>
+                <tr>
+                    <th align="center" colspan="2">
+                        <font size="4"><b>Order</b></font>
+                    </th>
+                </tr>
+
+                <tr>
+                    <th colspan="2">Billing Address</th>
+                </tr>
+                <tr>
+                    <td>First name:</td>
+                    <td><span th:text="${orderForm.billToFirstName}"></span></td>
+                </tr>
+                <tr>
+                    <td>Last name:</td>
+                    <td><span th:text="${orderForm.billToLastName}"></span></td>
+                </tr>
+                <tr>
+                    <td>Address 1:</td>
+                    <td><span th:text="${orderForm.billAddress1}"></span></td>
+                </tr>
+                <tr>
+                    <td>Address 2:</td>
+                    <td><span th:text="${orderForm.billAddress2}"></span></td>
+                </tr>
+                <tr>
+                    <td>City:</td>
+                    <td><span th:text="${orderForm.billCity}"></span></td>
+                </tr>
+                <tr>
+                    <td>State:</td>
+                    <td><span th:text="${orderForm.billState}"></span></td>
+                </tr>
+                <tr>
+                    <td>Zip:</td>
+                    <td><span th:text="${orderForm.billZip}"></span></td>
+                </tr>
+                <tr>
+                    <td>Country:</td>
+                    <td><span th:text="${orderForm.billCountry}"></span></td>
+                </tr>
+                <tr>
+                    <th colspan="2">Shipping Address</th>
+                </tr>
+                <tr>
+                    <td>First name:</td>
+                    <td><span th:text="${orderForm.shipToFirstName}"></span></td>
+                </tr>
+                <tr>
+                    <td>Last name:</td>
+                    <td><span th:text="${orderForm.shipToLastName}"></span></td>
+                </tr>
+                <tr>
+                    <td>Address 1:</td>
+                    <td><span th:text="${orderForm.shipAddress1}"></span></td>
+                </tr>
+                <tr>
+                    <td>Address 2:</td>
+                    <td><span th:text="${orderForm.shipAddress2}"></span></td>
+                </tr>
+                <tr>
+                    <td>City:</td>
+                    <td><span th:text="${orderForm.shipCity}"></span></td>
+                </tr>
+                <tr>
+                    <td>State:</td>
+                    <td><span th:text="${orderForm.shipState}"></span></td>
+                </tr>
+                <tr>
+                    <td>Zip:</td>
+                    <td><span th:text="${orderForm.shipZip}"></span></td>
+                </tr>
+                <tr>
+                    <td>Country:</td>
+                    <td><span th:text="${orderForm.shipCountry}"></span></td>
+                </tr>
+
+            </table>
+
+            <form th:action="@{/my/orders/create}" method="post">
+                <input id="order" type="submit" value="Submit"/>
+            </form>
+        </div>
+
+    </section>
+</div>
+</body>
+</html>

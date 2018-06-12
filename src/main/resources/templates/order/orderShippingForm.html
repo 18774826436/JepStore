@@ -1,0 +1,88 @@
+
+<!DOCTYPE html>
+<html
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{layout}">
+<body>
+<div id="Content">
+    <section layout:fragment="content">
+
+        <div id="Catalog">
+
+
+            <form th:action="@{/my/orders/create}" method="post" th:object="${orderForm}">
+
+                <table>
+                    <tr>
+                        <th colspan=2>Shipping Address</th>
+                    </tr>
+
+                    <tr>
+                        <td>First name:</td>
+                        <td>
+                            <input th:field="*{shipToFirstName}"/>
+                            <div th:errors="*{shipToFirstName}" class="fieldError"></div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>Last name:</td>
+                        <td>
+                            <input th:field="*{shipToLastName}"/>
+                            <div th:errors="*{shipToLastName}" class="fieldError"></div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>Address 1:</td>
+                        <td>
+                            <input size="40" th:field="*{shipAddress1}"/>
+                            <div th:errors="*{shipAddress1}" class="fieldError"></div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>Address 2:</td>
+                        <td>
+                            <input size="40" th:field="*{shipAddress2}"/>
+                            <div th:errors="*{shipAddress2}" class="fieldError"></div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>City:</td>
+                        <td>
+                            <input th:field="*{shipCity}"/>
+                            <div th:errors="*{shipCity}" class="fieldError"></div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>State:</td>
+                        <td>
+                            <input size="4" th:field="*{shipState}"/>
+                            <div th:errors="*{shipState}" class="fieldError"></div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>Zip:</td>
+                        <td>
+                            <input size="10" th:field="*{shipZip}"/>
+                            <div th:errors="*{shipZip}" class="fieldError"></div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>Country:</td>
+                        <td>
+                            <input size="15" th:field="*{shipCountry}"/>
+                            <div th:errors="*{shipCountry}" class="fieldError"></div>
+                        </td>
+                    </tr>
+
+                </table>
+
+                <input type="submit" name="confirm" value="Confirm"/>
+
+            </form>
+        </div>
+
+    </section>
+</div>
+</body>
+</html>

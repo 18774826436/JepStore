@@ -1,0 +1,44 @@
+
+<!DOCTYPE html>
+<html
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{layout}">
+<body>
+<div id="Content">
+    <section layout:fragment="content">
+
+        <div id="Catalog">
+
+            <h2>My Orders</h2>
+
+            <table>
+                <tr>
+                    <th>Order ID</th>
+                    <th>Date</th>
+                    <th>Total Price</th>
+                </tr>
+                <tr th:if="${#lists.isEmpty(orderList)}">
+                    <td colspan="3">
+                        Order not found.
+                    </td>
+                </tr>
+                <tr th:each="order : ${orderList}">
+                    <td>
+                        <a th:href="@{/my/orders/{orderId}(orderId=${order.orderId})}">
+                            <span th:text="${order.orderId}"></span>
+                        </a>
+                    </td>
+                    <td>
+                        <span th:text="${#temporals.format(order.orderDate, 'yyyy/MM/dd HH:mm:ss')}"></span>
+                    </td>
+                    <td>
+                        $<span th:text="${#numbers.formatDecimal(order.totalPrice, 1, 'COMMA', 2, 'POINT')}"></span>
+                    </td>
+                </tr>
+            </table>
+        </div>
+    </section>
+</div>
+</body>
+</html>

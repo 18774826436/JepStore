@@ -1,0 +1,73 @@
+
+<!DOCTYPE html>
+<html
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{layout}">
+<body>
+<div id="Content">
+    <section layout:fragment="content">
+
+        <div id="BackLink">
+            <a th:href="@{/catalog/products/{productId}(productId=${item.product.productId})}">Return to <span th:text="${item.product.productId}"></span></a>
+        </div>
+
+        <div id="Catalog">
+
+            <table>
+                <tr>
+                    <td th:utext="${item.product.description}"></td>
+                </tr>
+                <tr>
+                    <td>
+                        <b>
+                            <span th:text="${item.itemId}"></span>
+                        </b>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <b>
+                            <font size="4">
+                                <span th:text="${item.attribute1}"></span>
+                                <span th:text="${item.attribute2}"></span>
+                                <span th:text="${item.attribute3}"></span>
+                                <span th:text="${item.attribute4}"></span>
+                                <span th:text="${item.attribute5}"></span>
+                                <span th:text="${item.product.name}"></span>
+                            </font>
+                        </b>
+                    </td>
+                </tr>
+                <tr>
+                    <td th:text="${item.product.name}"></td>
+                </tr>
+                <tr>
+                    <td th:if="${item.quantity le 0}">
+                            Back ordered.
+                   </td>
+                    <td th:if="${item.quantity gt 0}">
+                        <span th:text="${item.quantity}"></span> in stock.
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        $<span th:text="${#numbers.formatDecimal(item.listPrice, 1, 'COMMA', 2, 'POINT')}">16.50</span>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td>
+                        <a th:href="@{/cart(add,itemId=${item.itemId})}" class="Button">
+                            Add to Cart
+                        </a>
+                    </td>
+                </tr>
+            </table>
+
+        </div>
+
+    </section>
+</div>
+</body>
+</html>

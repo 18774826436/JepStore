@@ -1,0 +1,28 @@
+
+<!DOCTYPE html>
+<html
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{layout}">
+<body>
+<div id="Content">
+    <section layout:fragment="content">
+
+        <div id="Catalog">
+
+            <form th:action="@{/login}" method="post">
+                <p>Please enter your username and password.</p>
+                <p>
+                    Username:<input name="username" /> <br />
+                    Password:<input type="password" name="password" />
+                </p>
+                <input id="login" type="submit" value="Login" />
+
+            </form>
+            Need a user name and password? <a th:href="@{/accounts/create(form)}">Register Now!</a>
+        </div>
+
+    </section>
+</div>
+</body>
+</html>

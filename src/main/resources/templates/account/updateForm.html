@@ -1,0 +1,58 @@
+
+<!DOCTYPE html>
+<html
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/extras/spring-security"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{layout}">
+<body>
+<div id="Content">
+    <section layout:fragment="content">
+
+        <div id="Catalog">
+
+            <form th:action="@{/my/account/update}" method="post" th:object="${accountForm}">
+
+                <h3>User Information</h3>
+
+                <table>
+                    <tr>
+                        <td>User ID:</td>
+                        <td>
+                            <span sec:authentication="principal.account.username"></span>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>New password:</td>
+                        <td>
+                            <input type="password" th:field="*{password}"/>
+                            <div th:errors="*{password}" class="fieldError"></div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>Repeat password:</td>
+                        <td>
+                            <input type="password" th:field="*{repeatedPassword}"/>
+                            <div th:errors="*{repeatedPassword}" class="fieldError"></div>
+                        </td>
+                    </tr>
+                </table>
+
+                <div th:include="account/flagments :: commonForm">
+                </div>
+
+                <input id="save" type="submit" value="Save Account Information"/>
+
+            </form>
+
+            <a th:href="@{/my/orders}">
+                My Orders
+            </a>
+
+        </div>
+
+
+    </section>
+</div>
+</body>
+</html>
